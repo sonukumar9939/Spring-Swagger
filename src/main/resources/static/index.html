@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="UTF-8" />
+<title>Contact Application</title>
+<script src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+<script
+	src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+	<div id="contactApp"></div>
+	<script type="text/babel">
+
+    
+    class ContactApplication extends React.Component {
+      constructor(props) {
+    super(props)
+    this.state = {
+      contacts: []
+    }
+  }
+  componentDidMount() {
+    fetch('http://localhost:8000/movies').then(contacts => {
+      return contacts.json()
+    }).then(contacts => {
+      this.setState({
+        contacts: contacts
+      })
+    })
+  }
+      render() {
+      console.log(this.state.contacts);
+        return (
+          <div>
+            <input type="button"/>
+          </div>
+        );
+      }
+    };
+    var counter = 0;
+    ReactDOM.render(<ContactApplication />, document.getElementById('contactApp'));
+  </script>
+</body>
+
+</html>
+
